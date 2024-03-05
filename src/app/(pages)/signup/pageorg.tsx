@@ -1,0 +1,24 @@
+"use client"
+
+import useAuth from "@/context/useAuth"
+import { useRouter } from "next/navigation"
+import React from "react"
+import SignupOrg from "@/components/SignupOrg"
+
+
+const SignupPage = () => {
+    const router = useRouter()
+    const {authStatus} = useAuth();
+
+    if(authStatus){
+        router.replace("/org-profile") // if user signup we need to show the profile to them
+        return <></>;  // we use empty fragment because layout need something to return 
+    }
+    return (
+        <section className="px-1 py-1 sm:px-6 sm:py-1 lg:px-4 lg:py-54">
+            <SignupOrg />
+        </section>
+    )
+}
+
+export default SignupPage;
